@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 10:24:35 by elarue            #+#    #+#             */
-/*   Updated: 2026/01/23 11:25:34 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/23 14:59:02 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -187,4 +187,3 @@ void	print_stack(t_node *a, t_config *config)
 	if (config->bench == 0)
 		ft_printf("OFF\n");
 }
-

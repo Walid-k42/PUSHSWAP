@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   main.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/23 14:59:08 by wakhazza          #+#    #+#             */
+/*   Updated: 2026/01/23 14:59:24 by wakhazza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 double	compute_disorder(t_node	*a)
@@ -29,6 +41,7 @@ int	is_sorted(t_node *a)
 	}
 	return (1);
 }
+
 void	free_stack(t_node **stack)
 {
 	t_node	*tmp;
@@ -43,6 +56,7 @@ void	free_stack(t_node **stack)
 	}
 	*stack = NULL;
 }
+
 int	cleanup_error(t_node **stack)
 {
 	if (stack)
@@ -50,6 +64,7 @@ int	cleanup_error(t_node **stack)
 	write(2, "Error\n", 6);
 	return (1);
 }
+
 #include <stdio.h>
 int	main(int ac, char **av)
 {

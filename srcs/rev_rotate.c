@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rev_rotate.c                                       :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/23 14:58:09 by wakhazza          #+#    #+#             */
+/*   Updated: 2026/01/23 14:58:43 by wakhazza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static void	rev_rotate(t_node **stack)
@@ -18,6 +30,7 @@ static void	rev_rotate(t_node **stack)
 	last->next = *stack;
 	*stack = last;
 }
+
 void	rra(t_node **stack_a)
 {
 	rev_rotate(stack_a);

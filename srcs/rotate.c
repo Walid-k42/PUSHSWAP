@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   rotate.c                                           :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/23 14:58:14 by wakhazza          #+#    #+#             */
+/*   Updated: 2026/01/23 14:58:35 by wakhazza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static void	rotate(t_node **stack)
@@ -15,6 +27,7 @@ static void	rotate(t_node **stack)
 	last->next = first;
 	first->next = NULL;
 }
+
 void	ra(t_node **stack_a)
 {
 	rotate(stack_a);

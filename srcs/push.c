@@ -1,3 +1,15 @@
+/* ************************************************************************** */
+/*                                                                            */
+/*                                                        :::      ::::::::   */
+/*   push.c                                             :+:      :+:    :+:   */
+/*                                                    +:+ +:+         +:+     */
+/*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
+/*                                                +#+#+#+#+#+   +#+           */
+/*   Created: 2026/01/23 14:58:06 by wakhazza          #+#    #+#             */
+/*   Updated: 2026/01/23 14:58:26 by wakhazza         ###   ########.fr       */
+/*                                                                            */
+/* ************************************************************************** */
+
 #include "../push_swap.h"
 
 static void	push(t_node **src, t_node **dst)
@@ -11,6 +23,7 @@ static void	push(t_node **src, t_node **dst)
 	tmp->next = *dst;
 	*dst = tmp;
 }
+
 void	pb(t_node **stack_a, t_node **stack_b)
 {
 	push(stack_a, stack_b);
