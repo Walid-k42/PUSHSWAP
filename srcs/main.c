@@ -6,11 +6,12 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 14:59:08 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/23 14:59:24 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/23 15:06:21 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
+#include <stdio.h>
 
 double	compute_disorder(t_node	*a)
 {
@@ -65,7 +66,6 @@ int	cleanup_error(t_node **stack)
 	return (1);
 }
 
-#include <stdio.h>
 int	main(int ac, char **av)
 {
 	t_node		*a;
