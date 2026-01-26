@@ -6,23 +6,41 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:00:31 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/23 15:01:23 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:04:51 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-int	stack_size(t_node *lst)
-{
-	int	i;
 
-	i = 0;
-	while (lst)
+double	compute_disorder(t_node	*a)
+{
+	double	mistakes;
+	double	total_pairs;
+
+	mistakes = 0;
+	total_pairs = 0;
+	while (a->next)
 	{
-		lst = lst->next;
-		i++;
+		if (a->value > a->next->value)
+			mistakes += 1;
+		total_pairs += 1;
+		a = a->next;
 	}
-	return (i);
+	return (mistakes / total_pairs);
+}
+
+int	is_sorted(t_node *a)
+{
+	if (!a)
+		return (1);
+	while (a->next)
+	{
+		if (a->value > a->next->value)
+			return (0);
+		a = a->next;
+	}
+	return (1);
 }
 
 int	find_min_pos(t_node *stack)

@@ -6,64 +6,51 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 14:59:08 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/23 15:06:21 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:19:22 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-#include <stdio.h>
 
-double	compute_disorder(t_node	*a)
+void	print_stack(t_node *a, t_config *config)
 {
-	double	mistakes;
-	double	total_pairs;
-
-	mistakes = 0;
-	total_pairs = 0;
-	while (a->next)
+	ft_printf("\nStack A:\n");
+	while (a)
 	{
-		if (a->value > a->next->value)
-			mistakes += 1;
-		total_pairs += 1;
+		ft_printf("%d\n", a->value);
 		a = a->next;
 	}
-	return (mistakes / total_pairs);
+	ft_printf("\n");
+	ft_printf("Strategy: ");
+	if (config->strat == STRAT_SIMPLE)
+		ft_printf("SIMPLE\n");
+	else if (config->strat == STRAT_MEDIUM)
+		ft_printf("MEDIUM\n");
+	else if (config->strat == STRAT_COMPLEX)
+		ft_printf("COMPLEX\n");
+	else if (config->strat == STRAT_ADAPTIVE)
+		ft_printf("ADAPTIVE\n");
+	ft_printf("Bench mode: ");
+	if (config->bench == 1)
+		ft_printf("ON\n");
+	if (config->bench == 0)
+		ft_printf("OFF\n");
 }
 
-int	is_sorted(t_node *a)
+void	print_stacks(t_node *a, t_node *b)
 {
-	if (!a)
-		return (1);
-	while (a->next)
+	ft_printf("\nStack A:\n");
+	while (a)
 	{
-		if (a->value > a->next->value)
-			return (0);
+		ft_printf("%d\n", a->value);
 		a = a->next;
 	}
-	return (1);
-}
-
-void	free_stack(t_node **stack)
-{
-	t_node	*tmp;
-
-	if (!stack || !*stack)
-		return ;
-	while (*stack)
+	ft_printf("\nStack B:\n");
+	while (b)
 	{
-		tmp = (*stack)->next;
-		free(*stack);
-		*stack = tmp;
+		ft_printf("%d\n", b->value);
+		b = b->next;
 	}
-	*stack = NULL;
-}
-
-int	cleanup_error(t_node **stack)
-{
-	if (stack)
-		free_stack(stack);
-	write(2, "Error\n", 6);
-	return (1);
 }
 
 int	main(int ac, char **av)
@@ -87,10 +74,13 @@ int	main(int ac, char **av)
 	if (!parse_numbers(start, ac, av, &a))
 		return (cleanup_error(&a));
 	if (is_sorted(a))
-		return (0);
-	printf("%.2f\n", compute_disorder(a));
-	insertion_sort(&a, &b);
-	print_stack(a, &config);
-	free_stack(&a);
+		return (cleanup_error(&a));
+	ft_printf("%.2f\n", compute_disorder(a));
+	// insertion_sort(&a, &b);
+	find_index(&a);
+	print_stacks(a, b);
+	chunk_sort(&a, &b);
+	print_stacks(a, b);
+	// free_stack(&a);
 	return (0);
 }
