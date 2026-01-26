@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 11:26:19 by elarue            #+#    #+#             */
-/*   Updated: 2026/01/26 19:27:58 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/26 20:05:38 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -82,5 +82,8 @@ int		cleanup_error(t_node **stack);
 
 void	print_stack(t_node *a, t_config *config);
 void	print_stacks(t_node *a, t_node *b);
+
+void	chose_strat(t_config config, t_node **stack_a, t_node ** stack_b);
+void	adaptive_strat(t_node **stack_a, t_node ** stack_b);
 
 #endif
