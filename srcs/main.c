@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 14:59:08 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/26 19:19:22 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/26 19:43:45 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -58,7 +58,7 @@ int	main(int ac, char **av)
 	t_node		*a;
 	t_node		*b;
 	t_config	config;
-	int			start;
+	int			strat;
 
 	a = NULL;
 	b = NULL;
@@ -66,15 +66,15 @@ int	main(int ac, char **av)
 		return (0);
 	config.strat = STRAT_NONE;
 	config.bench = 0;
-	start = parse_flags(ac, av, &config);
-	if (start < 0)
+	strat = parse_flags(ac, av, &config);
+	if (strat < 0)
 		return (cleanup_error(&a));
 	if (config.strat == STRAT_NONE)
 		config.strat = STRAT_ADAPTIVE;
-	if (!parse_numbers(start, ac, av, &a))
+	if (!parse_numbers(strat, ac, av, &a))
 		return (cleanup_error(&a));
 	if (is_sorted(a))
-		return (cleanup_error(&a));
+		return (cleanup_error(&a)); // changer ca.
 	ft_printf("%.2f\n", compute_disorder(a));
 	// insertion_sort(&a, &b);
 	find_index(&a);
