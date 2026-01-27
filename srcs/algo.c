@@ -6,12 +6,11 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:00:31 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/26 19:04:51 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:33:29 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
-
 
 double	compute_disorder(t_node	*a)
 {
@@ -67,7 +66,7 @@ int	find_min_pos(t_node *stack)
 	return (min_pos);
 }
 
-void	min_to_top(t_node **stack_a, int min_pos)
+void	min_to_top(t_node **stack_a, int min_pos, t_config *config)
 {
 	int	size;
 	int	moves;
@@ -76,12 +75,12 @@ void	min_to_top(t_node **stack_a, int min_pos)
 	if (min_pos == 0)
 		return ;
 	if (min_pos == 1)
-		return (sa(stack_a));
+		return (sa(stack_a, config));
 	if (min_pos <= size / 2)
 	{
 		while (min_pos > 0)
 		{
-			ra(stack_a);
+			ra(stack_a, config);
 			min_pos--;
 		}
 	}
@@ -90,22 +89,22 @@ void	min_to_top(t_node **stack_a, int min_pos)
 		moves = size - min_pos;
 		while (moves > 0)
 		{
-			rra(stack_a);
+			rra(stack_a, config);
 			moves--;
 		}
 	}
 }
 
-void	insertion_sort(t_node **stack_a, t_node **stack_b)
+void	insertion_sort(t_node **stack_a, t_node **stack_b, t_config *config)
 {
 	int		min_pos;
 
 	while (stack_size(*stack_a) > 0)
 	{
 		min_pos = find_min_pos(*stack_a);
-		min_to_top(stack_a, min_pos);
-		pb(stack_a, stack_b);
+		min_to_top(stack_a, min_pos, config);
+		pb(stack_a, stack_b, config);
 	}
 	while (*stack_b)
-		pa(stack_a, stack_b);
+		pa(stack_a, stack_b, config);
 }

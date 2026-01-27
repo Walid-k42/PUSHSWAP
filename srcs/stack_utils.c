@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 15:04:17 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/26 19:19:15 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/27 15:15:55 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -24,13 +24,14 @@ int	stack_size(t_node *lst)
 	}
 	return (i);
 }
+
 int	find_index(t_node **stack_a)
 {
 	t_node	*tmp;
 	t_node	*current;
 	int		smaller;
 	int		total;
-	
+
 	total = 0;
 	current = *stack_a;
 	while (current != NULL)
@@ -40,7 +41,7 @@ int	find_index(t_node **stack_a)
 		while (tmp != NULL)
 		{
 			if (current->value > tmp ->value)
-			smaller += 1;
+				smaller += 1;
 			tmp = tmp->next;
 		}
 		current->index = smaller;
@@ -97,4 +98,3 @@ int	push_back(t_node **a, int v)
 	last->next = new;
 	return (1);
 }
-

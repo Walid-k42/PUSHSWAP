@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/26 19:05:58 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/26 19:22:19 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:16:51 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -25,13 +25,15 @@ void	free_split(char **split)
 	free(split);
 }
 
-int	cleanup_error(t_node **stack)
+int	cleanup_error(t_node **stack, int j)
 {
 	if (stack)
 		free_stack(stack);
-	write(2, "Error\n", 6);
+	if (j != 1)
+		write(2, "Error\n", 6);
 	return (1);
 }
+
 void	free_stack(t_node **stack)
 {
 	t_node	*tmp;

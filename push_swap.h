@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 11:26:19 by elarue            #+#    #+#             */
-/*   Updated: 2026/01/26 20:05:38 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/27 16:28:26 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -21,6 +21,21 @@
 # include "libft.h"
 # include "ft_printf.h"
 
+typedef enum e_move
+{
+	COUNT_SA,
+	COUNT_SB,
+	COUNT_SS,
+	COUNT_PA,
+	COUNT_PB,
+	COUNT_RA,
+	COUNT_RB,
+	COUNT_RR,
+	COUNT_RRA,
+	COUNT_RRB,
+	COUNT_RRR,
+} t_move;
+
 typedef enum e_strategy
 {
 	STRAT_NONE,
@@ -34,6 +49,8 @@ typedef struct s_config
 {
 	t_strategy		strat;
 	int				bench;
+	int				counts[11];
+	int				total;
 }					t_config;
 
 typedef struct s_node
@@ -47,25 +64,25 @@ int		parse_flags(int ac, char **av, t_config *config);
 int		parse_numbers(int i, int ac, char **av, t_node **a);
 int		find_index(t_node **stack_a);
 
-void	sa(t_node **stack_a);
-void	sb(t_node **stack_b);
-void	ss(t_node **stack_a, t_node **stack_b);
-void	pa(t_node **stack_a, t_node **stack_b);
-void	pb(t_node **stack_a, t_node **stack_b);
-void	ra(t_node **stack_a);
-void	rb(t_node **stack_b);
-void	rr(t_node **stack_a, t_node **stack_b);
-void	rra(t_node **stack_a);
-void	rrb(t_node **stack_b);
-void	rrr(t_node **stack_a, t_node **stack_b);
+void	sa(t_node **stack_a, t_config *config);
+void	sb(t_node **stack_b, t_config *config);
+void	ss(t_node **stack_a, t_node **stack_b, t_config *config);
+void	pa(t_node **stack_a, t_node **stack_b, t_config *config);
+void	pb(t_node **stack_a, t_node **stack_b, t_config *config);
+void	ra(t_node **stack_a, t_config *config);
+void	rb(t_node **stack_b, t_config *config);
+void	rr(t_node **stack_a, t_node **stack_b, t_config *config);
+void	rra(t_node **stack_a, t_config *config);
+void	rrb(t_node **stack_b, t_config *config);
+void	rrr(t_node **stack_a, t_node **stack_b, t_config *config);
 
-void	chunk_sort(t_node **stack_a, t_node **stack_b);
-void	bring_to_a(t_node **stack_a,t_node **stack_b);
-void	max_to_top(t_node **stack_b, int max_pos);
+void	chunk_sort(t_node **stack_a, t_node **stack_b, t_config *config);
+void	bring_to_a(t_node **stack_a, t_node **stack_b, t_config *config);
+void	max_to_top(t_node **stack_b, int max_pos, t_config *config);
 int		set_chunks(t_node **stack_a);
 
-void	insertion_sort(t_node **stack_a, t_node **stack_b);
-void	min_to_top(t_node **stack_a, int min_pos);
+void	insertion_sort(t_node **stack_a, t_node **stack_b, t_config *config);
+void	min_to_top(t_node **stack_a, int min_pos, t_config *config);
 
 t_node	*node_new(int value);
 int		push_back(t_node **a, int v);
@@ -78,12 +95,12 @@ double	compute_disorder(t_node	*a);
 
 void	free_stack(t_node **stack);
 void	free_split(char **split);
-int		cleanup_error(t_node **stack);
+int		cleanup_error(t_node **stack, int j);
 
 void	print_stack(t_node *a, t_config *config);
 void	print_stacks(t_node *a, t_node *b);
 
-void	chose_strat(t_config config, t_node **stack_a, t_node ** stack_b);
-void	adaptive_strat(t_node **stack_a, t_node ** stack_b);
+void	chose_strat(t_config config, t_node **stack_a, t_node **stack_b);
+void	adaptive_strat(t_node **stack_a, t_node **stack_b, t_config *config);
 
 #endif
