@@ -6,38 +6,42 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 11:27:52 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/28 11:30:49 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/28 15:44:30 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
 #include "../push_swap.h"
 
-void	chose_strat(t_config config, t_node **stack_a, t_node **stack_b)
+void	chose_strat(t_config *config, t_node **stack_a, t_node **stack_b)
 {
-	if (config.strat == STRAT_ADAPTIVE)
-		adaptive_strat(stack_a, stack_b, &config);
-	else if (config.strat == STRAT_SIMPLE)
-		insertion_sort(stack_a, stack_b, &config);
-	else if (config.strat == STRAT_MEDIUM)
-		chunk_sort(stack_a, stack_b, &config);
-	else if (config.strat == STRAT_COMPLEX)
+	if (config->strat == STRAT_ADAPTIVE)
+		adaptive_strat(stack_a, stack_b, config);
+	else if (config->strat == STRAT_SIMPLE)
+		insertion_sort(stack_a, stack_b, config);
+	else if (config->strat == STRAT_MEDIUM)
+		chunk_sort(stack_a, stack_b, config);
+	else if (config->strat == STRAT_COMPLEX)
 	{
 		compress_stack_to_index(*stack_a);
-		radix_sort(stack_a, stack_b, &config);
+		radix_sort(stack_a, stack_b, config);
 	}
 }
 
 void	adaptive_strat(t_node **stack_a, t_node **stack_b, t_config *config)
 {
-	double	disorder;
-
-	disorder = compute_disorder(*stack_a);
-	if (disorder < 0.2)
-		insertion_sort(stack_a, stack_b, config);
-	if (disorder >= 0.2 && disorder < 0.5)
-		chunk_sort(stack_a, stack_b, config);
-	if (disorder >= 0.5)
+	if (config->disorder < 0.2)
 	{
+		config->chosen = 1;
+		insertion_sort(stack_a, stack_b, config);
+	}
+	if (config->disorder >= 0.2 && config->disorder < 0.5)
+	{
+		config->chosen = 2;
+		chunk_sort(stack_a, stack_b, config);
+	}
+	if (config->disorder >= 0.5)
+	{
+		config->chosen = 3;
 		compress_stack_to_index(*stack_a);
 		radix_sort(stack_a, stack_b, config);
 	}

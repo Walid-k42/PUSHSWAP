@@ -3,10 +3,10 @@
 /*                                                        :::      ::::::::   */
 /*   push_swap.h                                        :+:      :+:    :+:   */
 /*                                                    +:+ +:+         +:+     */
-/*   By: elarue <elarue@student.42.fr>              +#+  +:+       +#+        */
+/*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 11:26:19 by elarue            #+#    #+#             */
-/*   Updated: 2026/01/28 10:49:19 by elarue           ###   ########.fr       */
+/*   Updated: 2026/01/28 15:32:17 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -33,6 +33,7 @@ typedef enum e_move
 	COUNT_RRA,
 	COUNT_RRB,
 	COUNT_RRR,
+	COUNT_MAX,
 }					t_move;
 
 typedef enum e_strategy
@@ -48,8 +49,10 @@ typedef struct s_config
 {
 	t_strategy		strat;
 	int				bench;
-	int				counts[11];
+	int				counts[COUNT_MAX];
 	int				total;
+	int				chosen;
+	double			disorder;
 }					t_config;
 
 typedef struct s_node
@@ -102,7 +105,7 @@ int					cleanup_error(t_node **stack, int j);
 void				print_stack(t_node *a, t_config *config);
 void				print_stacks(t_node *a, t_node *b);
 
-void				chose_strat(t_config config, t_node **stack_a,
+void				chose_strat(t_config *config, t_node **stack_a,
 						t_node **stack_b);
 void				adaptive_strat(t_node **stack_a, t_node **stack_b,
 						t_config *config);
