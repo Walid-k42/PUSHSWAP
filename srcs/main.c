@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/23 14:59:08 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/28 15:44:09 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:08:50 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -127,7 +127,7 @@ int	main(int ac, char **av)
 	if (!parse_numbers(strat, ac, av, &a))
 		return (cleanup_error(&a, 0));
 	config.disorder = compute_disorder(a);
-	if (is_sorted(a))
+	if (is_sorted(a) && config.bench == 0)
 		return (cleanup_error(&a, 1));
 	find_index(&a);
 	chose_strat(&config, &a, &b);

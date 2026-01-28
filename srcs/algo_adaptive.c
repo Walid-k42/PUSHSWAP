@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/28 11:27:52 by wakhazza          #+#    #+#             */
-/*   Updated: 2026/01/28 15:44:30 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/28 18:10:37 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -14,6 +14,8 @@
 
 void	chose_strat(t_config *config, t_node **stack_a, t_node **stack_b)
 {
+	if (is_sorted(*stack_a))
+		return ;
 	if (config->strat == STRAT_ADAPTIVE)
 		adaptive_strat(stack_a, stack_b, config);
 	else if (config->strat == STRAT_SIMPLE)
