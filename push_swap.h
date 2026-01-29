@@ -6,7 +6,7 @@
 /*   By: wakhazza <wakhazza@student.42.fr>          +#+  +:+       +#+        */
 /*                                                +#+#+#+#+#+   +#+           */
 /*   Created: 2026/01/21 11:26:19 by elarue            #+#    #+#             */
-/*   Updated: 2026/01/28 15:32:17 by wakhazza         ###   ########.fr       */
+/*   Updated: 2026/01/29 13:00:52 by wakhazza         ###   ########.fr       */
 /*                                                                            */
 /* ************************************************************************** */
 
@@ -112,5 +112,8 @@ void				adaptive_strat(t_node **stack_a, t_node **stack_b,
 
 void				compress_stack_to_index(t_node *a);
 void				radix_sort(t_node **a, t_node **b, t_config *config);
+
+void				init_config(t_config *config);
+void				print_bench(t_config *config);
 
 #endif

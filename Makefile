@@ -9,6 +9,7 @@ SRCS        = srcs/main.c srcs/parsing.c srcs/swap.c \
               srcs/push.c srcs/rotate.c srcs/rev_rotate.c \
 			  srcs/algo_simple.c srcs/stack_utils.c srcs/algo_medium.c\
 			  srcs/memory.c srcs/algo_complex.c srcs/algo_adaptive.c\
+			  srcs/bench.c\
 
 OBJS        = $(SRCS:.c=.o)
 
